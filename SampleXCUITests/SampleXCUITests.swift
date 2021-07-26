@@ -45,6 +45,24 @@ class SampleXCUITests: XCTestCase {
         XCTAssertEqual(app.alerts.count, 0)
     }
     
+    func testAlertPresent() {
+        
+        let app = XCUIApplication()
+        
+        //bring up the alert
+        app.buttons["Alert"].tap()
+        
+        //verify that the alert has come
+        XCTAssertEqual(app.alerts.element.label, "Alert")
+        
+        //verify that the alert is dismissed
+        XCTAssertEqual(app.alerts.count, 1)
+        
+        //dismiss the alert
+        app.alerts.buttons["OK"].tap()
+        
+    }
+    
     func testText() {
         let app = XCUIApplication()
         
@@ -76,6 +94,15 @@ class SampleXCUITests: XCTestCase {
         menuToggleButton.tap()
         menuToggleButton.tap()
         app/*@START_MENU_TOKEN@*/.links["BrowserStack"]/*[[".otherElements[\"Most Reliable App & Cross Browser Testing Platform | BrowserStack\"]",".otherElements[\"banner\"].links[\"BrowserStack\"]",".links[\"BrowserStack\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.waitForExistence(timeout: 10)
         XCTAssert(app.links["BrowserStack"].exists, "WebView Not Working")
     }
+    
+//    func testLocalTesting(){
+//        let app = XCUIApplication()
+//        app.tabBars.buttons["Local Testing"].tap()
+//        let page_title = app.otherElements["BrowserStack Local"]
+//        _ = page_title.waitForExistence(timeout: 10)
+//        XCTAssert(page_title.exists,"Local Testing not working")
+//    }
 }
