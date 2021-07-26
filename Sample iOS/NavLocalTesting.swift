@@ -23,11 +23,10 @@ class NavLocalTesting: UIViewController, WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string:"https://local.bsstag.com:45692")
+        // Put your local URL below
+        let url = URL(string:"http://127.0.0.1:5500/HTML_FILES/index.html")
         let request = URLRequest(url: url!)
-        
         localtestingwebview.load(request)
-        
     }
     
     override var prefersStatusBarHidden: Bool  {
