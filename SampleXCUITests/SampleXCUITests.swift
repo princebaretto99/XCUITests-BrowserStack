@@ -63,15 +63,13 @@ class SampleXCUITests: XCTestCase {
         
     }
     
-    func testText() {
+    func testTextEqual() {
         let app = XCUIApplication()
         
         //visit the text page
         app.buttons["Text"].tap()
         
         let enterText = "Hi Browserstack!!"
-        //verify that the text field has come up
-        XCTAssert(app.textFields["Enter a text"].exists)
         
         //write the text
         app.textFields["Enter a text"].tap()
@@ -80,6 +78,27 @@ class SampleXCUITests: XCTestCase {
         
         //verify that the text entered matches the text view
         XCTAssertEqual(app.staticTexts.element.label, enterText)
+    }
+    
+    func testDefaultDisplayText() {
+        let app = XCUIApplication()
+        let defaultText = "Waiting for text input."
+        
+        //visit the text page
+        app.buttons["Text"].tap()
+        
+        //verify if the default text is visible
+        XCTAssert(app.staticTexts[defaultText].exists)
+    }
+    
+    func testTextFieldPresent() {
+        let app = XCUIApplication()
+        
+        app.buttons["Text"].tap()
+        
+        //verify if text-field is present
+        XCTAssert(app.textFields["Enter a text"].exists)
+        
     }
     
     func testWebView() {
