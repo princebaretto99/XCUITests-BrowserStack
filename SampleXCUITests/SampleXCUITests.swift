@@ -117,11 +117,9 @@ class SampleXCUITests: XCTestCase {
         XCTAssert(app.links["BrowserStack"].exists, "WebView Not Working")
     }
     
-//    func testLocalTesting(){
-//        let app = XCUIApplication()
-//        app.tabBars.buttons["Local Testing"].tap()
-//        let page_title = app.otherElements["BrowserStack Local"]
-//        _ = page_title.waitForExistence(timeout: 10)
-//        XCTAssert(page_title.exists,"Local Testing not working")
-//    }
+    func testLocalTesting(){
+        let app = XCUIApplication()
+        let tab = app.tabBars.buttons["Local Testing"]
+        XCTAssert(tab.exists,"Local Testing not Present")
+    }
 }
